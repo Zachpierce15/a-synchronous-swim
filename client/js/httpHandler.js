@@ -5,6 +5,18 @@
   //
   // TODO: build the swim command fetcher here
   //
+  const commandFetch = () => {
+    $.ajax({
+      url: serverUrl + '/command',
+      type: 'GET',
+      success: (data) => {
+        // reload the page
+        console.log("Command Fetch Success:" , data)
+      }
+    });
+
+  }
+  setInterval(commandFetch,1000);
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
