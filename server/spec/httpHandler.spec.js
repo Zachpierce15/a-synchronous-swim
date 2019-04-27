@@ -27,9 +27,13 @@ describe('server responses', () => {
     let {req, res} = server.mock('/command', 'GET');
 
     httpHandler.router(req, res);
+    var command = ['left','right','down','up'];
+    
+    var valid = command.includes(res._data.toString());
     expect(res._responseCode).to.equal(200);
+    expect(valid).to.equal(true);
     expect(res._ended).to.equal(true);
-    expect(res._data.toString()).to.be.empty;
+    
 
     done();
 

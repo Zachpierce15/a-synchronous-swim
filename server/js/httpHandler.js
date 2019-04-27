@@ -13,16 +13,22 @@ module.exports.router = (req, res, next = ()=>{}) => {
  
 
   if (req.method === "GET" && req.url === "/command") {
-  
+    res.writeHead(200, headers);
+    var commands = ["left","right","down","up"];
+    var randomCommand = commands[Math.floor(Math.random()*commands.length)];
     var command = messages.dequeue();
+    
     if (command !== undefined){
     res.write(command);
     }
-    res.writeHead(200, headers);
+    if (command === undefined){
+      res.write(randomCommand);
+    }
+   
+    
     res.end();
-  }
 
-  else {
+  } else {
     res.writeHead(200, headers);
     res.end();
   }

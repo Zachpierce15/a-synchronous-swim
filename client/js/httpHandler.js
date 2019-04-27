@@ -11,8 +11,13 @@
       type: 'GET',
       success: (data) => {
         // reload the page
+        SwimTeam.move(data);
         console.log("Command Fetch Success:" , data)
+      },
+      error: (error) => {
+        console.log(error);
       }
+      
     });
 
   };
