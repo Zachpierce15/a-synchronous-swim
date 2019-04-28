@@ -21,7 +21,25 @@
     });
 
   };
-  setInterval(commandFetch,1000);
+  //setInterval(commandFetch,1000);
+
+  const imageFetch = () => {
+    $.ajax({
+      url: serverUrl + '/image',
+      type: 'GET',
+      success: (data) => {
+        // reload the page
+        //$('div .pool').css('background-image', serverUrl + '/image');
+        console.log("Command Fetch Success:" , data)
+      },
+      error: (error) => {
+        console.log(error);
+      }
+      
+    });
+
+  };
+  imageFetch();
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -34,7 +52,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: serverUrl,
+      url: serverUrl+'/background.jpg',
       cache: false,
       contentType: false,
       processData: false,
